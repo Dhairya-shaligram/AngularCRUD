@@ -1,0 +1,26 @@
+<li *ngIf="!item.hidden" data-username="dashboard Default" class="nav-item pcoded-hasmenu" [routerLinkActive]="['active']">
+  <a
+    href="javascript:"
+    class="nav-link"
+    (click)="navCollapse($event)"
+    [routerLinkActive]="['active']"
+  >
+    <span class="pcoded-micon" *ngIf="item.icon">
+      <i class="{{ item.icon }}"></i>
+    </span>
+    <span class="pcoded-mtext">{{ item.title }} </span>
+  </a>
+  <ul class="pcoded-submenu" [routerLinkActive]="['active']">
+    <ng-container *ngFor="let child of item.children">
+      <ng-container *ngIf="child.type === 'group'">
+        <app-nav-group [item]="child"></app-nav-group>
+      </ng-container>
+      <ng-container *ngIf="child.type === 'collapse'">
+        <app-nav-collapse [item]="child"></app-nav-collapse>
+      </ng-container>
+      <ng-container *ngIf="child.type === 'item'">
+        <app-nav-item [item]="child"></app-nav-item>
+      </ng-container>
+    </ng-container>
+  </ul>
+</li>

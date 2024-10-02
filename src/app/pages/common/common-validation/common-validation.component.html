@@ -1,0 +1,9 @@
+<div *ngIf="formGroup && controlName">
+    <div *ngIf="isFieldInvalid() && (formGroup.get(controlName)?.touched || formSubmitted)" class="text-danger">
+      <small *ngIf="formGroup.get(controlName)?.errors?.['required']">This field is required.</small>
+      <small *ngIf="formGroup.get(controlName)?.errors?.['minlength']">Minimum length is {{ formGroup.get(controlName)?.errors?.['minlength'].required }} characters.</small>
+      <small *ngIf="formGroup.get(controlName)?.errors?.['maxlength']">Maximum length is {{ formGroup.get(controlName)?.errors?.['maxlength'].required }} characters.</small>
+      <small *ngIf="formGroup.get(controlName)?.errors?.['pattern']">Invalid format.</small>
+      <small *ngIf="formGroup.get(controlName)?.errors?.['email']">Please enter a valid email address.</small>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()">
+  <div class="d-flex flex-row bd-highlight mb-3">
+    <div class="p-2 w-50 bd-highlight">
+      <input type="hidden" formControlName="employeeId"/>
+
+      <div class="form-group mb-1">
+        <span class="ml-2">Name</span>
+        <input
+          type="text"
+          formControlName="employeeName"
+          class="form-control"
+        />
+        <app-common-validation controlName="employeeName" [formGroup]="employeeForm" [formSubmitted]="formSubmitted"></app-common-validation>
+      </div>
+
+      <div class="form-group mb-1">
+        <span class="ml-2">Department</span>
+        <select formControlName="departmentId" class="form-select">
+          <option value="">--Select--</option>
+          <option *ngFor="let dep of departmentList" [value]="dep.departmentId">
+            {{dep.departmentName}}
+          </option>
+        </select>
+        <app-common-validation controlName="departmentId" [formGroup]="employeeForm" [formSubmitted]="formSubmitted"></app-common-validation>
+      </div>
+
+      <div class="form-group mb-1">
+        <span class="ml-2">DOJ</span>
+        <input type="date" formControlName="doj" class="form-control">
+      </div>
+
+      <app-common-validation controlName="doj" [formGroup]="employeeForm" [formSubmitted]="formSubmitted" ></app-common-validation>
+
+      <div class="form-group mb-1">
+        <span class="ml-2">EmailId</span>
+        <input type="text" formControlName="emailId" class="form-control">
+      </div>
+
+      <app-common-validation controlName="emailId" [formGroup]="employeeForm" [formSubmitted]="formSubmitted"></app-common-validation>
+    </div>
+
+    <div class="p-2 w-50 bd-highlight">
+      <img width="250px" height="250px" [src]="photoFilePath" *ngIf="photoFilePath"/>
+      <input class="m-2" type="file">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">
+    Save
+  </button>
+</form>

@@ -1,0 +1,69 @@
+<div class="row justify-content-end pb-1">
+  <div class="w-25">
+    <input
+      class="form-control col-2"
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="seacrchChange()"
+      placeholder="Search"
+      maxlength="250"
+    />
+  </div>
+</div>
+
+<div class="table-responsive">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    (matSortChange)="sortChange($event)"
+    class="table table-striped"
+  >
+    <ng-container *ngFor="let columnDef of displayedColumns">
+      <ng-container matColumnDef="{{ columnDef }}">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          {{ getColumnDetails('title', columnDef) }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container *ngIf="columnDef !== 'Action'; else actionTemplate">
+            <span>{{ element[columnDef] }}</span>
+          </ng-container>
+          <ng-template #actionTemplate>
+            <ng-container *ngIf="getColumnDetails('button', columnDef) as buttons">
+              <span *ngFor="let buttonDef of buttons" 
+                    (click)="onAction(buttonDef, element)"
+                    class="cursor-pointer me-2"
+                    title="{{ buttonDef.Title }}">
+                <i class="{{ buttonDef.Icon }}"></i>{{ buttonDef.Text }}
+              </span>
+            </ng-container>
+          </ng-template>
+        </td>
+      </ng-container>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <tr class="mat-row text-center" *matNoDataRow>
+      <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+        <ng-container *ngIf="searchTerm && searchTerm.length > 0; else noDataTemplate">
+          <span>No data matching the filter "{{ searchTerm }}"</span>
+        </ng-container>
+        <ng-template #noDataTemplate>
+          <span>No data available to show</span>
+        </ng-template>
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator
+    [pageSize]="pagination.PageSize"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+    (page)="pageChanged($event)"
+    [length]="totalRecord"
+  >
+  </mat-paginator>
+</div>

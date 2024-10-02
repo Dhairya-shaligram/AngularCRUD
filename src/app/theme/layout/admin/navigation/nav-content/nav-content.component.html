@@ -1,0 +1,23 @@
+<ng-scrollbar
+  style="height: calc(100vh - 70px)"
+  exclude="'#mobile-collapse1'"
+  visibility?="hover"
+>
+  <div class="navbar-content">
+    <ul class="nav pcoded-inner-navbar"
+        (clickOutside)="fireOutClick()"
+        (mouseleave)="navMob()">
+      <li *ngFor="let item of navigation">
+        <ng-container *ngIf="item.type === 'group'">
+          <app-nav-group [item]="item"></app-nav-group>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'collapse'">
+          <app-nav-collapse [item]="item"></app-nav-collapse>
+        </ng-container>
+        <ng-container *ngIf="item.type === 'item'">
+          <app-nav-item [item]="item"></app-nav-item>
+        </ng-container>
+      </li>
+    </ul>
+  </div>
+</ng-scrollbar>

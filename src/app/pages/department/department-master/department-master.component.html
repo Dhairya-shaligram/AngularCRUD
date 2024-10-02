@@ -1,0 +1,77 @@
+<!-- <form [formGroup]="departmentForm" (ngSubmit)="saveDepartment()">
+  <div class="d-flex flex-row bd-highlight mb-9">
+    <div class="p-2 w-100 bd-highlight">
+      <div class="input-group mb-12">
+        <input type="hidden" formControlName="departmentId"/>
+        <div class="form-group mb-1">
+          <span class="ml-2">Name</span>
+          <input
+            type="text"
+            formControlName="departmentName"
+            class="form-control depName"
+          />
+          <app-common-validation controlName="departmentName" [formGroup]="departmentForm" [formSubmitted]="formSubmitted"></app-common-validation>
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+  <button class="btn btn-primary">
+    Save
+  </button>
+</form> -->
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        <h5>DEPARTMENT DETAILS</h5>
+      </div>
+      <div class="card-block">
+        <form
+          [formGroup]!="departmentForm"
+          (ngSubmit)="onSubmit()"
+          #departmentFrm="ngForm"
+          novalidate
+        >
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Department Name <span class="text-danger">*</span></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  autocomplete="off"
+                  formControlName="departmentName"
+                  placeholder="Enter first name"
+                  [ngClass]="{
+                    'border-danger':
+                      departmentFrm.submitted &&
+                      departmentFormControl['departmentName'].errors?.['required']
+                  }"
+                />
+                <span
+                  class="text-danger"
+                  *ngIf="
+                    departmentFrm.submitted &&
+                    departmentFormControl['departmentName'].errors?.['required']
+                  "
+                >
+                  Department Name is required
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-12 text-center">
+              <button type="submit" class="btn btn-success px-5" title="Save">
+                Save
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

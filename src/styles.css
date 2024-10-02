@@ -1,0 +1,10 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.modal-title-large 
+{
+    font-size: 21px !important;
+    font-weight: bold !important;
+    color: #333 !important;
+    margin-bottom: 6px !important;
+    
+}
