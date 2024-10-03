@@ -10,7 +10,7 @@ export interface TableColumn {
   title: string;
   isShow: boolean;
   buttons: Array<ButtonsConfig>;
-}
+} 
 
 export interface ApiConfigModel {
   url: string;

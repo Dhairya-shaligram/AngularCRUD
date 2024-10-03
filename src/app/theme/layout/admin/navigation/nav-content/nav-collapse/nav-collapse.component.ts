@@ -24,7 +24,7 @@ import { NavigationItem } from '../../navigation';
 export class NavCollapseComponent {
   // public props
   visible = false;
-  @Input() item!: NavigationItem;
+  @Input() item?: NavigationItem;
 
   // public method
   navCollapse(e: any) {

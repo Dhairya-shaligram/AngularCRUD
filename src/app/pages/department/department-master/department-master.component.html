@@ -30,7 +30,7 @@
       </div>
       <div class="card-block">
         <form
-          [formGroup]!="departmentForm"
+          [formGroup]="departmentForm"
           (ngSubmit)="onSubmit()"
           #departmentFrm="ngForm"
           novalidate

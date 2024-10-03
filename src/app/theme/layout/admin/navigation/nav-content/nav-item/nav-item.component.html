@@ -1,28 +1,28 @@
-<li *ngIf="!item.hidden">
-  <ng-container *ngIf="item.url && !item.external; else externalLink">
-    <li [ngClass]="item.classes" [routerLinkActive]="['active']">
+<li *ngIf="!item?.hidden">
+  <ng-container *ngIf="item?.url && !item?.external; else externalLink">
+    <li [ngClass]="item?.classes" [routerLinkActive]="['active']">
       <a
         class="nav-link"
-        [target]="item.target ? '_blank' : '_self'"
-        [routerLink]="[item.url]"
+        [target]="item?.target ? '_blank' : '_self'"
+        [routerLink]="[item?.url]"
         (click)="closeOtherMenu($event)"
       >
-        <span class="pcoded-micon" *ngIf="item.icon">
-          <i class="feather" [ngClass]="item.icon"></i>
+        <span class="pcoded-micon" *ngIf="item?.icon">
+          <i class="feather" [ngClass]="item?.icon"></i>
         </span>
-        <span class="pcoded-mtext" *ngIf="item.icon; else onlyTitle">{{ item.title }}</span>
-        <ng-template #onlyTitle>{{ item.title }}</ng-template>
+        <span class="pcoded-mtext" *ngIf="item?.icon; else onlyTitle">{{ item?.title }}</span>
+        <ng-template #onlyTitle>{{ item?.title }}</ng-template>
       </a>
     </li>
   </ng-container>
   <ng-template #externalLink>
-    <li [ngClass]="item.classes">
-      <a [target]="item.target ? '_blank' : '_self'" [href]="item.url">
-        <span class="pcoded-micon" *ngIf="item.icon">
-          <i class="feather" [ngClass]="item.icon"></i>
+    <li [ngClass]="item?.classes">
+      <a [target]="item?.target ? '_blank' : '_self'" [href]="item?.url">
+        <span class="pcoded-micon" *ngIf="item?.icon">
+          <i class="feather" [ngClass]="item?.icon"></i>
         </span>
-        <span class="pcoded-mtext" *ngIf="item.icon; else onlyTitle">{{ item.title }}</span>
-        <ng-template #onlyTitle>{{ item.title }}</ng-template>
+        <span class="pcoded-mtext" *ngIf="item?.icon; else onlyTitle">{{ item?.title }}</span>
+        <ng-template #onlyTitle>{{ item?.title }}</ng-template>
       </a>
     </li>
   </ng-template>

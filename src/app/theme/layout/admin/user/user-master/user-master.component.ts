@@ -2,16 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiUrlHelper } from 'src/app/config/api-url-helper';
-
-import { NotificationType, RoleName } from 'src/app/core/enums/common-enum';
+import { NotificationType } from 'src/app/core/enums/common-enum';
 import { PaginationModel } from 'src/app/core/model/common-model';
 import { CommonService } from 'src/app/core/services/commonservice.service';
-
 
 @Component({
   selector: 'app-user-master',
   templateUrl: './user-master.component.html',
-  styleUrls: ['./user-master.component.css'],
+  styleUrl: './user-master.component.css',
 })
 export class UserMasterComponent implements OnInit {
   userForm: FormGroup = this.formBuilder.group({});
@@ -42,6 +40,7 @@ export class UserMasterComponent implements OnInit {
         this.userId = +this.commonService.Decrypt(id); // Convert id to a number
       }
     });
+
   }
 
   initUserForm() {

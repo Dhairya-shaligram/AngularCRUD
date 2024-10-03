@@ -1,25 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatIconModule } from '@angular/material/icon';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator'; 
-import { MatSortModule } from '@angular/material/sort';
-import { EmployeeComponent } from './pages/employee/employee.component';
-import { AddEditEmployeeComponent } from './pages/employee/add-edit-employee/add-edit-employee.component';
+import { AppRoutingModule } from './app-routing.module';
+// import { EmployeeComponent } from './pages/employee/employee.component';
+// import { AddEditEmployeeComponent } from './pages/employee/add-edit-employee/add-edit-employee.component';
 
-import { CommonValidationComponent } from './pages/common/common-validation/common-validation.component';
-import { ShowEmployeeComponent } from './pages/employee/show-employee/show-employee.component';
-import { DataTableModule } from './pages/common/data-table/data-table.module';
+// import { CommonValidationComponent } from './pages/common/common-validation/common-validation.component';
+// import { ShowEmployeeComponent } from './pages/employee/show-employee/show-employee.component';
+import { AppComponent } from './app.component';
+import { SharedModule } from './theme/shared/shared.module';
+import { AdminComponent } from './theme/layout/admin/admin.component';
 import { CommonService } from './core/services/commonservice.service';
+
 import { NavBarComponent } from './theme/layout/admin/nav-bar/nav-bar.component';
 import { NavigationComponent } from './theme/layout/admin/navigation/navigation.component';
 import { NavLeftComponent } from './theme/layout/admin/nav-bar/nav-left/nav-left.component';
@@ -31,18 +24,20 @@ import { NavGroupComponent } from './theme/layout/admin/navigation/nav-content/n
 import { NavItemComponent } from './theme/layout/admin/navigation/nav-content/nav-item/nav-item.component';
 import { NavSearchComponent } from './theme/layout/admin/nav-bar/nav-left/nav-search/nav-search.component';
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
-import { HTTPListener, HTTPStatus } from './auth-guard/auth.interceptor';
 import { ToggleFullScreenDirective } from './theme/shared/components/full-screen/toggle-full-screen';
-import { SharedModule } from './theme/shared/shared.module';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { HTTPListener, HTTPStatus } from './auth-guard/auth.interceptor';
+
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 const RxJS_Services = [HTTPListener, HTTPStatus];
 @NgModule({
   declarations: [
     AppComponent,
-    EmployeeComponent,
-    AddEditEmployeeComponent,
-    ShowEmployeeComponent,
-    CommonValidationComponent,
+    // EmployeeComponent,
+    // AddEditEmployeeComponent,
+    // CommonValidationComponent,
     NavBarComponent,
     NavigationComponent,
     NavLeftComponent,
@@ -53,25 +48,18 @@ const RxJS_Services = [HTTPListener, HTTPStatus];
     NavGroupComponent,
     NavItemComponent,
     NavSearchComponent,
-    ToggleFullScreenDirective
+    ToggleFullScreenDirective,
+    AdminComponent
   ],
   imports: [
-    MatPaginatorModule,
-    MatSortModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatIconModule,
-    MatTableModule,
-    FormsModule,
-    SharedModule,
     BrowserModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
+    SharedModule,
+    BrowserAnimationsModule,
+    NgSelectModule,
     HttpClientModule,
     ToastrModule.forRoot(),
-    DataTableModule
-],
+  ],
   // providers: [DatePipe],
   providers: [
     NavigationItem,
@@ -81,7 +69,7 @@ const RxJS_Services = [HTTPListener, HTTPStatus];
       provide: HTTP_INTERCEPTORS,
       useClass: HTTPListener,
       multi: true,
-    }
+    },
   ],
   bootstrap: [AppComponent],
 })

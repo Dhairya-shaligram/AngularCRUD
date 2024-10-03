@@ -153,9 +153,9 @@ export class ShowDepartmentComponent {
 onAction(event: ActionEvent) {
   if (event) {
     if (event.Type == ActionType.Edit) {
-    this.onAddEdit(event.Data);
+      this.onAddEdit(event.Data);
     } else if (event.Type == ActionType.Delete) {
-    this.onDelete(event.Data);
+      this.onDelete(event.Data);
     }
   }
 }

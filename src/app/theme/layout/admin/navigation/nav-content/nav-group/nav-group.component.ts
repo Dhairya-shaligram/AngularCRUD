@@ -12,7 +12,7 @@ import { NavigationItem } from '../../navigation';
 })
 export class NavGroupComponent implements OnInit {
   // public props
-  @Input() item!: NavigationItem;
+  @Input() item?: NavigationItem;
 
   // constructor
   constructor(private location: Location) {}

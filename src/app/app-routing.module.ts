@@ -1,13 +1,9 @@
-import { NgModule } from '@angular/core';
+
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './theme/layout/admin/admin.component';
+import { NgModule } from '@angular/core';
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'auth',
-    pathMatch: 'full',
-  },
   {
     path: '',
     redirectTo: 'auth',
@@ -32,11 +28,11 @@ const routes: Routes = [
           ),
       },
     ],
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

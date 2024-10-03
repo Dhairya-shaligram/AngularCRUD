@@ -8,8 +8,8 @@ import {
 } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, finalize, map } from 'rxjs/operators';
-import { CommonService } from '../core/services/commonservice.service';
 import { SharedService } from '../core/services/sharedservice.service';
+import { CommonService } from '../core/services/commonservice.service';
 
 @Injectable()
 export class HTTPStatus {
@@ -32,8 +32,8 @@ export class HTTPListener implements HttpInterceptor {
   constructor(
     private router: Router,
     private status: HTTPStatus,
+    private sharedService: SharedService,
     private commonService: CommonService,
-    private sharedService: SharedService
   ) {}
   intercept(
     req: HttpRequest<any>,
